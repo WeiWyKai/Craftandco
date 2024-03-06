@@ -1,0 +1,12 @@
+<h1>Hello! Je t'invite à valider ton adresse email</h1>
+
+<p>
+    Veuillez valider votre adresse email en cliquant sur le lien suivant <br><br>
+    <a href="{{ signedUrl|raw }}">Confirmer mon email</a>.
+    Ce lien va expirer dans {{ expiresAtMessageKey|trans(expiresAtMessageData, 'VerifyEmailBundle') }}.
+</p>
+
+<p>
+    Bye!
+    Team CraftAndCo~
+</p>

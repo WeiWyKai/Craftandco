@@ -1,3 +1,3 @@
 framework:
     mailer:
-        dsn: '%env(MAILER_DSN)%'
+        dsn: 'smtp://8b151d8f43a018:d7ff22464edfe4@sandbox.smtp.mailtrap.io:2525'
