@@ -37,7 +37,7 @@ class RegistrationFormType extends AbstractType
                 ],
                 'constraints' => [
                     new NotBlank([
-                        'message' => 'Veuillez saisir votre nom'
+                        'message' => 'Veuillez saisir votre prénom'
                     ]),
                 ]
             ])

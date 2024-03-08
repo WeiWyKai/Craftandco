@@ -14,6 +14,24 @@
         {% endblock %}
     </head>
     <body>
-        {% block body %}{% endblock %}
+        {% block navbar %}
+            {% if app.user %}
+                <nav class="navbar">
+                    <div class="">
+                        <a href="" class="nav-link ">
+                            <img 
+                            src="{{app.user.avatar}}" 
+                            alt="{{app.user.username}}" 
+                            class="rounded-circle"
+                            style="height:75px; width:75px"
+                            >
+                        </a>
+                    </div>
+                </nav>
+            {% endif %}
+        {% endblock %}
+
+        {% block body %}
+        {% endblock %}
     </body>
 </html>
