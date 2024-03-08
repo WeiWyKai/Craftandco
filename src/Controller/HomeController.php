@@ -24,5 +24,13 @@ class HomeController extends AbstractController
         return $this->render('home/homepage.html.twig');
     }
 
+     #[Route('/recipes', name: 'app_recipes')]
+    public function recipes(): Response
+    {
+        return $this->render('home/recipes.html.twig');
+    }
+
+    
+
 
 }

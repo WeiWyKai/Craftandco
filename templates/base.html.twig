@@ -16,16 +16,23 @@
     <body>
         {% block navbar %}
             {% if app.user %}
-                <nav class="navbar">
+                <nav class="navbar rounded-2 frame">
                     <div class="">
-                        <a href="" class="nav-link ">
+                        <a href="" class="nav-link link-dark px-3">
                             <img 
                             src="{{app.user.avatar}}" 
                             alt="{{app.user.username}}" 
-                            class="rounded-circle"
-                            style="height:75px; width:75px"
+                            class="rounded-circle me-2"
+                            style="height:3rem; width:3rem"
                             >
+                        Bonjour <span class="fw-bold fst-italic">{{app.user.firstname}}</span> !
                         </a>
+                    </div>
+                    <div class="px-3">
+                        <a href="{{ path('app_recipes') }}" class="btn button">Recette</a>
+                        <a class="btn button">Emploi du Temps</a>
+                        <a href="{{ path('app_logout') }}" class="btn btn-outline-danger">Déconnexion</a>
+                    
                     </div>
                 </nav>
             {% endif %}
