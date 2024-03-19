@@ -4,22 +4,20 @@
 
 {% block body %}
     <h1 class="m-3"> Liste des recettes</h1>
-    <table class="table">
+    <table class="table frame">
         <thead>
             <tr>
+                <th scope="col">Aperçu</th>
                 <th scope="col">Nom</th>
                 <th scope="col">Recette</th>
-                <th scope="col">Apperçu</th>
             </tr>
         </thead>
         <tbody>
             {% for recipe in recipes %}
-                <tr class="">
-                    <td scope="row">
-                        <a href="">{{ recipe.name }}</a>
-                    </td>
-                    <td class="fst-italic"><img src="" alt=""></td>
-                    <td><img style="height:125px; width:125px" src="{{ asset(recipe.recipe_previewr) }}" alt="{{ recipe.name }}"></td>
+                <tr>
+                    <td scope="row"><img style="height:125px; width:125px"  src="{{ recipe.recipe_preview }}" alt="{{ recipe.name }}"></td>
+                    <td scope="row" class="fst-italic">{{ recipe.name }}</td>
+                    <td scope="row"><img src="{{ recipe.recipe_link }}" alt="voir la recette"></td>
                 </tr>
             
             {% endfor %}

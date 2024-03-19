@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nouvelle recettte?{% endblock %}
+
+{% block body %}
+  <h1 class="m-3"> Ajouter une nouvelle recette:</h1>
+  {% for message in app.flashes('success') %}
+    <div class="alert alert-success m-3">
+      {{ message }}
+    </div>
+  {% endfor %}
+
+  <div class="m-5 p-4 frame">
+    {{ form(recipeForm) }}
+  </div>
+    
+
+{% endblock %}

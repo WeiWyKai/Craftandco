@@ -29,14 +29,14 @@ class RecipeFormType extends AbstractType
                         'min' => 3,
                         'minMessage' => 'Le nom doit contenir au minimum {{ limit }} caractères'
                     ])
-                ]
+                ],
             ])
             ->add('recipe_preview', FileType::class,[
-                'label' => 'Choisissez une image',
-                'message' => 'formats acceptés: jpeg, jpg, pdf, png',
+                'label' => 'Choisissez une image:',
+                'help' => 'formats acceptés: jpeg, jpg, pdf, png',
                 'constraints' => [
                     new File([
-                        'maxSize' => '2*1024k',
+                        'maxSize' => '2048k',
                         'mimeTypes' => [
                             'application/pdf',
                             'application/x-pdf',
