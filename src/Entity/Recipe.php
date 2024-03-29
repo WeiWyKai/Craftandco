@@ -22,6 +22,9 @@ class Recipe
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $recipe_preview = null;
 
+    #[ORM\Column(length: 255)]
+    private ?string $category = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -59,6 +62,18 @@ class Recipe
     public function setRecipePreview(?string $recipe_preview): static
     {
         $this->recipe_preview = $recipe_preview;
+
+        return $this;
+    }
+
+    public function getCategory(): ?string
+    {
+        return $this->category;
+    }
+
+    public function setCategory(string $category): static
+    {
+        $this->category = $category;
 
         return $this;
     }

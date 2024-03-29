@@ -3,21 +3,29 @@
 {% block title %}Toutes les recettes{% endblock %}
 
 {% block body %}
-    <h1 class="m-3"> Liste des recettes</h1>
-    <table class="table frame">
+    <div class="frame p-3">
+    <h1 class="mb-3"> Liste des recettes:</h1>
+        <div class="d-flex justify-content-around">
+            <a href="{{ path('app_all_recipes', {cat: "sugar"})}}" class="btn button ">Recettes Sucrées</a>
+            <a href="{{ path('app_all_recipes', {cat: "all"})}}" class="btn button ">Toutes les recettes</a>
+            <a href="{{ path('app_all_recipes', {cat: "salt"})}}" class="btn button">Recettes Salées</a>
+        </div>
+    </div>
+    
+    <table class="table table-striped table-bordered">
         <thead>
-            <tr>
-                <th scope="col">Aperçu</th>
-                <th scope="col">Nom</th>
+            <tr class="mb-2 ">
+                <th scope="col" class="col-2">Aperçu</th>
+                <th scope="col" class="col-8">Nom</th>
                 <th scope="col">Recette</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody class="table-group-divider">
             {% for recipe in recipes %}
                 <tr>
-                    <td scope="row"><img style="height:125px; width:125px"  src="{{ recipe.recipe_preview }}" alt="{{ recipe.name }}"></td>
-                    <td scope="row" class="fst-italic">{{ recipe.name }}</td>
-                    <td scope="row"><img src="{{ recipe.recipe_link }}" alt="voir la recette"></td>
+                    <td class="d-flex justify-content-center"><img style="height:125px; width:100px"  src="/recipes/{{ asset(recipe.recipePreview) }}" alt="{{ recipe.name }}"></td>
+                    <td class="fst-italic">{{ recipe.name }}</td>
+                    <td class="text-center"><img style="height:40px; width:40px " src="{{ asset(recipe.recipeLink) }}" alt="voir la recette"></td>
                 </tr>
             
             {% endfor %}

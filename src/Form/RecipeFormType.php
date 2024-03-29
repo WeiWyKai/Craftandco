@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Recipe;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -37,16 +38,19 @@ class RecipeFormType extends AbstractType
                 'constraints' => [
                     new File([
                         'maxSize' => '2048k',
-                        'mimeTypes' => [
-                            'application/pdf',
-                            'application/x-pdf',
-                            'application/jpeg',
-                            'application/jpg',
-                            'application/png',
-                        ],
-                        'mimeTypesMessage' => 'Veuillez choisir une image au bon format',
+                        'maxSizeMessage' => 'Le fichier ne doit pas dépasser 2Ko',
+                        'extensions'=> ['png','jpeg', 'jpg', 'pdf'],
+                        'extensionsMessage' => 'Veuillez choisir une image au bon format',
                     ])
                 ]
+            ])
+            ->add('category', ChoiceType::class,[
+                'label' => 'Catégorie:',
+                'choices' =>[ 
+                    'Sucré' => 'sugar',
+                    'Salé' => 'salt'
+                ]
+
             ])
             ->add('save', SubmitType::class, [
                 'label' => 'Valider',
