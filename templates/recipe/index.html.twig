@@ -2,9 +2,20 @@
 
 {% block title %}Toutes les recettes{% endblock %}
 
+{# {% block javascripts %}
+
+{% endblock %} #}
+
 {% block body %}
+
+    {% for message in app.flashes('success') %}
+        <div class="alert alert-success m-3">
+        {{ message }}
+        </div>
+    {% endfor %}
+    
     <div class="frame p-3">
-    <h1 class="mb-3"> Liste des recettes:</h1>
+        <h1 class="mb-3"> Liste des recettes:</h1>
         <div class="d-flex justify-content-around">
             <a href="{{ path('app_all_recipes', {cat: "sugar"})}}" class="btn button ">Recettes Sucrées</a>
             <a href="{{ path('app_all_recipes', {cat: "all"})}}" class="btn button ">Toutes les recettes</a>
@@ -21,13 +32,30 @@
             </tr>
         </thead>
         <tbody class="table-group-divider">
+            {% set i=0 %}
             {% for recipe in recipes %}
                 <tr>
-                    <td class="d-flex justify-content-center"><img style="height:125px; width:100px"  src="/recipes/{{ asset(recipe.recipePreview) }}" alt="{{ recipe.name }}"></td>
+                    <td class="d-flex justify-content-center">
+                        <img 
+                            style="height:125px; width:100px"  
+                            src="/recipes/{{ asset(recipe.recipePreview) }}" 
+                            alt="{{ recipe.name }}"
+                        >
+                    </td>
                     <td class="fst-italic">{{ recipe.name }}</td>
-                    <td class="text-center"><img style="height:40px; width:40px " src="{{ asset(recipe.recipeLink) }}" alt="voir la recette"></td>
+                    <td class="text-center">
+                        <button 
+                            type="image" 
+                            class="btn btn-outline-warning recipeDetail{{ i }}" 
+                            data-number= {{ i }}
+                            data-preview="/recipes/{{ asset(recipe.recipePreview) }}"
+                            data-name={{ recipe.name }}
+                            id="recipe">
+                            <img style="height:40px; width:40px " src="{{ asset(recipe.recipeLink) }}" alt="voir la recette">
+                        </button>
+                    </td>
                 </tr>
-            
+                {% set i = i + 1 %}
             {% endfor %}
         </tbody>
     </table>
